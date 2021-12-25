@@ -15,10 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .view import home_page
+from .view import home_page,header,footer
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_page),
+    path('header', header,name='header'),
+    path('footer', header,name='footer'),
 ]
 
 from django.conf import settings

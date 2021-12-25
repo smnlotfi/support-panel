@@ -1,0 +1,20 @@
+{% load render_partial %}
+{% load static %}
+
+
+{% render_partial 'header'  %}
+<body class="dark-edition">
+  <div class="wrapper ">
+      {% include 'layouts/sidebar.html' %}
+    <div class="main-panel">
+    {% include 'layouts/navbar.html' %}
+    {% block content  %}
+    {% endblock  %}
+    {% render_partial 'footer'  %}
+    </div>
+  </div>
+    {% include 'layouts/setting-theme.html' %}
+    {% include 'layouts/scripts.html' %}
+</body>
+
+</html>
