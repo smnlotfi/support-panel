@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 def header(request):
     context={
-       
+       'heloo':'HELLO WORLD!'
     }
     return render(request,'layouts/header.html',context)
 
