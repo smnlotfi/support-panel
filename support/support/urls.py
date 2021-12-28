@@ -20,7 +20,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_page),
     path('header', header,name='header'),
-    path('footer', header,name='footer'),
+    path('footer', footer,name='footer'),
 ]
 
 from django.conf import settings

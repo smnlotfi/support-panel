@@ -1,10 +1,9 @@
-{% load render_partial %}
+{% comment %} {% load render_partial %} {% endcomment %}
 {% load static %}
 
 <footer class="footer">
     
     <div class="container-fluid">
-      <h1>salam</h1>
       <nav class="float-left">
         <ul>
           <li>
@@ -34,13 +33,14 @@
         <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
       </div>
     </div>
-  </footer>
+</footer>
   
-  <script>
-    const x = new Date().getFullYear();
-    let date = document.getElementById('date');
-    date.innerHTML = '&copy; ' + x + date.innerHTML;
-  </script>
+<script>
+  const x = new Date().getFullYear();
+  let date = document.getElementById('date');
+  date.innerHTML = '&copy; ' + x + date.innerHTML;
+</script>
+ 
 
 
     

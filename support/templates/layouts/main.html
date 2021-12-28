@@ -3,18 +3,34 @@
 
 
 {% render_partial 'header'  %}
-<body class="dark-edition">
-  <div class="wrapper ">
-      {% include 'layouts/sidebar.html' %}
-    <div class="main-panel">
-    {% include 'layouts/navbar.html' %}
-    {% block content  %}
-    {% endblock  %}
-    {% render_partial 'footer'  %}
+
+  <body class="dark-edition">
+
+    <div class="wrapper ">
+
+        {% include 'layouts/sidebar.html' %}
+      <div class="main-panel">
+
+        {% include 'layouts/navbar.html' %}
+
+        {% block header %}
+        {% endblock  %}
+
+        {% block content  %}
+        {% endblock  %}
+
+        {% block footer %}
+        {% endblock  %}
+
+        {% render_partial 'footer'  %}
+
+      </div>
+
     </div>
-  </div>
-    {% include 'layouts/setting-theme.html' %}
-    {% include 'layouts/scripts.html' %}
-</body>
+
+      {% include 'layouts/setting-theme.html' %}
+      {% include 'layouts/scripts.html' %}
+      
+  </body>
 
 </html>
