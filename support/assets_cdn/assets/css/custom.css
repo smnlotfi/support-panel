@@ -1,0 +1,6 @@
+.dark-edition .form-control:invalid{
+    background-image:linear-gradient(to top, #601d77 2px, rgba(244, 67, 54, 0) 2px), linear-gradient(to top, rgba(180, 180, 180, 0.1) 1px, rgba(180, 180, 180, 0) 1px)!important;
+}
+.dark-edition .form-control{
+    color:#000
+}

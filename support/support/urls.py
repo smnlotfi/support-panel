@@ -15,12 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.urls.conf import include
 from .view import home_page,header,footer
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_page),
     path('header', header,name='header'),
     path('footer', footer,name='footer'),
+    path('', include('voipe_code.urls')),
 ]
 
 from django.conf import settings

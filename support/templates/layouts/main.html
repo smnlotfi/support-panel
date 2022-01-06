@@ -3,24 +3,22 @@
 
 
 {% render_partial 'header'  %}
+        {% block header %}
+        {% endblock  %}
 
-  <body class="dark-edition">
+  <body style="direction:rtl" class=" dark-edition">
 
     <div class="wrapper ">
 
-        {% include 'layouts/sidebar.html' %}
+        
       <div class="main-panel">
 
         {% include 'layouts/navbar.html' %}
 
-        {% render_partial 'header'  %}
-
-        {% block header %}
-        {% endblock  %}
-
-
         {% block content  %}
         {% endblock  %}
+
+        {% include 'layouts/sidebar.html' %}  
 
         {% block footer %}
         {% endblock  %}

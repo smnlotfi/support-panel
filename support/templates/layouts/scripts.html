@@ -17,8 +17,11 @@
   <script src={% static 'assets/js/plugins/bootstrap-notify.js' %}></script>
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src={% static 'assets/js/material-dashboard.js' %}></script>
+  <script src={% static 'assets/js/custom.js' %}></script>
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src={% static 'assets/demo/demo.js' %}></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.js"></script>
+  
   <script>
     $(document).ready(function() {
       $().ready(function() {
@@ -186,5 +189,23 @@
       // Javascript method's body can be found in assets/js/demos.js
       md.initDashboardPageCharts();
 
+
+      $('.nav-link').click(function(){
+        var id=$(this).attr('id')
+        id=id.split('-')
+        id='v-pills-' + id[2]
+        console.log(id)
+        $('.tab-pane').removeClass('active')
+        $('.tab-pane').removeClass('show')
+        $('#'+id).addClass('active')
+        $('#'+id).addClass('show')
+      })
+
+
+      $('#userstable').DataTable();
+      $('.table').addClass('bs-select');
+
     });
+
+
   </script>

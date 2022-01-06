@@ -1,0 +1,189 @@
+<div class="tab-pane fade show active" id="v-pills-users">
+
+  {% comment %} add user button {% endcomment %}
+
+  <button type="button" class="btn btn-primary add_user" 
+          data-toggle="modal" data-target="#add_user_modal" 
+          data-whatever="@mdo">
+          اضافه کردن کاربر
+  </button>
+
+    {% comment %} content {% endcomment %}
+
+    <div class="row">
+
+      <div class="col-md-12">
+          <div class="card">
+            <div class="card-header card-header-primary">
+              <h4 class="card-title ">نمایش کاربران</h4>
+              <p class="card-category"> </p>
+            </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table id="userstable" class="table">
+                    <thead class=" text-primary">
+                      <tr><th>
+                        شناسه
+                      </th>
+                      <th>
+                        نام
+                      </th>
+                      <th>
+                        نام کاربری
+                      </th>
+                      <th>
+                        داخلی
+                      </th>
+                      <th>
+                          نقش کاربری
+                      </th>
+                    </tr></thead>
+                    <tbody>
+                      {% for user in users %}
+                      <tr>
+                          <td>{{user.id}}</td>
+                          <td>{{user.first_name}}  {{user.last_name}}</td>
+                          <td>
+                              <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit_user_modal" data-whatever="@mdo" >
+                                  {{user.username}}
+                              </a>
+                          </td>
+                          <td>{% if user.voipe_code %}
+                              {{user.voipe_code}}
+                              {% endif %}
+                          </td>
+                          <td>{% if user.is_admin %}
+                              admin
+                              {% else %}
+                              supporter
+                              {% endif %}
+                              
+                          </td>
+                      </tr>
+
+                      {% endfor %} 
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+
+    </div>
+
+
+
+
+{% comment %} Modals Content {% endcomment %}
+
+{% comment %} edit user {% endcomment %}
+
+<div class="modal fade" id="edit_user_modal" 
+  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" 
+  aria-hidden="true">
+
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">ویرایش کاربر</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            {% csrf_token %}
+            <div class="form-group">
+              {{edit_form.username.label}}
+              {{edit_form.username}}
+            </div>
+            <div class="form-group">
+              {{edit_form.firstname.label}}
+              {{edit_form.firstname}}
+            </div>
+            <div class="form-group">
+              {{edit_form.voipe_code.label}}
+              {{edit_form.voipe_code}}
+            </div>
+            <div class="form-group">
+              {{edit_form.user_role.label}}
+              {{edit_form.user_role}}
+            </div>
+          </form>
+          {% for field in Form %}
+          {% for error in field.errors %}
+              <strong>{{ error }}</strong>
+          {% endfor %}
+
+          {% endfor %}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">بستن</button>
+          <button type="button" class="btn btn-primary">ویرایش کاربر</button>
+          <button type="button" class="btn btn-primary">حذف کاربر</button>
+        </div>
+      </div>
+    </div>
+
+</div>
+
+
+{% comment %} add user {% endcomment %}
+
+<div class="modal fade" id="add_user_modal" 
+  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" 
+  aria-hidden="true">
+
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">اضافه کردن کاربر</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="add_user" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+              {{add_form.username.label}}
+              {{add_form.username}}
+            </div>
+            <div class="form-group">
+              {{add_form.firstname.label}}
+              {{add_form.firstname}}
+            </div>
+            <div class="form-group">
+              {{add_form.voipe_code.label}}
+              {{add_form.voipe_code}}
+            </div>
+            <div class="form-group">
+              {{add_form.password.label}}
+              {{add_form.password}}
+            </div>
+            <div class="form-group">
+              {{add_form.user_role.label}}
+              {{add_form.user_role}}
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">بستن</button>
+              <button type="submit" class="btn btn-primary">افزودن </button>
+            </div>
+          </form>
+          {% for field in Form %}
+          {% for error in field.errors %}
+              <strong>{{ error }}</strong>
+          {% endfor %}
+
+          {% endfor %}
+        </div>
+        
+      </div>
+    </div>
+
+</div>
+
+
+

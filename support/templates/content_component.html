@@ -1,0 +1,15 @@
+{%extends 'layouts/content.html'%}
+{% load render_partial %}
+
+
+
+ {% block users %}
+
+    {% render_partial 'users' %}
+    
+{% endblock  %} 
+
+{% block requests %}
+    {% include 'requests.html' %}
+{% endblock  %}
+
